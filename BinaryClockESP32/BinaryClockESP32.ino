@@ -80,31 +80,8 @@ void packAndDisplay(uint8_t* pack)
   ly = leap year, 31 = long month,
   WC = Wi-Fi Connected, sy = syncing, sf = sync fail
   */
-  uint8_t /*digit = 0x00010000, */location = 7;
+  uint8_t location = 7, base = 8;
 
-  /*
-  // month
-  pack[3] |= (now.month & digit) << location;
-  digit >>= 1; location--;
-  for (uint8_t re = 3; re >= 0; re--)
-  {
-    pack[re] |= (now.month & digit) << location;
-    digit >>= 1;
-  }
-  location--;
-
-  // day
-  digit = 0x00010000;
-  pack[3] |= (now.day & digit) << location;
-  digit >>= 1; location--;
-  for (uint8_t re = 3; re >= 0; re--)
-  {
-    pack[re] |= (now.day & digit) << location;
-    digit >>= 1;
-  }
-  location--;
-  */
-  uint8_t base = 8;
   // month
   for (uint8_t re = 0; re <= 3; re++)
   {
@@ -182,16 +159,16 @@ void setup(){
     pinMode(selected, OUTPUT);
   }
   /*
-  1, 2, 3, 4, 5, 6, 7
-       | DEC|| 74595 |
+  3, 4, 5, 6, 7
+  |DEC|| 74595 |
   */
 
   WiFi.begin(ssid, pwd);
   while (WiFi.status() != WL_CONNECTED) {
     wifiWaitingAction();
   }
-  now.wifiConnection = 1;
- 
+  now.wifiConeection = 1;
+
   getTime(outputPackage);
 }
 
