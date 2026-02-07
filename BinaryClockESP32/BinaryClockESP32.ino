@@ -167,7 +167,7 @@ void setup(){
   while (WiFi.status() != WL_CONNECTED) {
     wifiWaitingAction();
   }
-  now.wifiConeection = 1;
+  now.wifiConnection = 1;
 
   getTime(outputPackage);
 }
